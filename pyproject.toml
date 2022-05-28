@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "gotenberg-client"
+version = "7.0.0"
+description = "A client library for accessing Gotenberg"
+authors = [
+    "Matyas Richter <matyas@mrichter.cz>"
+]
+readme = "README.md"
+packages = [
+    {include = "gotenberg_client"},
+]
+include = ["CHANGELOG.md", "gotenberg_client/py.typed"]
+license = "MIT"
+homepage = "https://github.com/matyasrichter/gotenberg-client-python"
+keywords = ["gotenberg", "api client", "generated"]
+classifiers = [
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+httpx = ">=0.15.4,<0.23.0"
+attrs = ">=21.3.0"
+python-dateutil = "^2.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target_version = ['py37', 'py38', 'py39']
+exclude = '''
+(
+  /(
+    | \.git
+    | \.venv
+    | \.mypy_cache
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 120
+profile = "black"
