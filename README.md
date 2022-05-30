@@ -9,7 +9,7 @@ First, create a client:
 ```python
 from gotenberg_client import Client
 
-client = Client(base_url="http://gotenberg:3000")
+client = Client(base_url="http://gotenberg:3000", timeout=5.0, verify_ssl=True)
 ```
 
 If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
@@ -17,7 +17,12 @@ If the endpoints you're going to hit require authentication, use `AuthenticatedC
 ```python
 from gotenberg_client import AuthenticatedClient
 
-client = AuthenticatedClient(base_url="http://gotenberg:3000", token="SuperSecretToken")
+client = AuthenticatedClient(
+    base_url="http://gotenberg:3000",
+    token="SuperSecretToken",
+    timeout=5.0,
+    verify_ssl=True
+)
 ```
 
 Now call your endpoint and use your models:
@@ -56,6 +61,7 @@ to authenticate to a server (especially an internal server) using a custom certi
 client = AuthenticatedClient(
     base_url="https://gotenberg.svc", 
     token="SuperSecretToken",
+    timeout=5.0,
     verify_ssl="/path/to/certificate_bundle.pem",
 )
 ```
@@ -66,6 +72,7 @@ You can also disable certificate validation altogether, but beware that **this i
 client = AuthenticatedClient(
     base_url="https://gotenberg.svc", 
     token="SuperSecretToken", 
+    timeout=5.0,
     verify_ssl=False
 )
 ```
